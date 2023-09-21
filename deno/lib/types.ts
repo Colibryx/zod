@@ -404,6 +404,7 @@ export abstract class ZodType<
     this.default = this.default.bind(this);
     this.catch = this.catch.bind(this);
     this.describe = this.describe.bind(this);
+    this.weight = this.weight.bind(this);
     this.pipe = this.pipe.bind(this);
     this.readonly = this.readonly.bind(this);
     this.isNullable = this.isNullable.bind(this);
@@ -487,6 +488,15 @@ export abstract class ZodType<
     return new This({
       ...this._def,
       description,
+    });
+  }
+
+
+  weight(weight: number): this {
+    const This = (this as any).constructor;
+    return new This({
+      ...this._def,
+      weight,
     });
   }
 
