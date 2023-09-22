@@ -1,8 +1,9 @@
-import defaultErrorMap from "./locales/it";
+import defaultErrorMap from "./locales/en";
+import itErrorMap from "./locales/it";
 import type { ZodErrorMap } from "./ZodError";
 
 let overrideErrorMap = defaultErrorMap;
-export { defaultErrorMap };
+export { defaultErrorMap, itErrorMap };
 
 export function setErrorMap(map: ZodErrorMap) {
   overrideErrorMap = map;
