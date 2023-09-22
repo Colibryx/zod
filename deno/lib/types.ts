@@ -56,6 +56,7 @@ export type CustomErrorParams = Partial<util.Omit<ZodCustomIssue, "code">>;
 export interface ZodTypeDef {
   errorMap?: ZodErrorMap;
   description?: string;
+  weight?: number;
 }
 
 class ParseInputLazyPath implements ParseInput {
@@ -490,7 +491,6 @@ export abstract class ZodType<
       description,
     });
   }
-
 
   weight(weight: number): this {
     const This = (this as any).constructor;
