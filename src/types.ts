@@ -57,6 +57,7 @@ export interface ZodTypeDef {
   errorMap?: ZodErrorMap;
   description?: string;
   weight?: number;
+  mutable?: boolean;
 }
 
 class ParseInputLazyPath implements ParseInput {
@@ -406,6 +407,7 @@ export abstract class ZodType<
     this.catch = this.catch.bind(this);
     this.describe = this.describe.bind(this);
     this.weight = this.weight.bind(this);
+    this.mutable = this.mutable.bind(this);
     this.pipe = this.pipe.bind(this);
     this.readonly = this.readonly.bind(this);
     this.isNullable = this.isNullable.bind(this);
@@ -497,6 +499,14 @@ export abstract class ZodType<
     return new This({
       ...this._def,
       weight,
+    });
+  }
+
+  mutable(mutable: boolean): this {
+    const This = (this as any).constructor;
+    return new This({
+      ...this._def,
+      mutable,
     });
   }
 
