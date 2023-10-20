@@ -167,6 +167,14 @@ export abstract class ZodType<
     return this._def.description;
   }
 
+  get weight() {
+    return this._def.weight;
+  }
+
+  get mutable() {
+    return this._def.mutable;
+  }
+
   abstract _parse(input: ParseInput): ParseReturnType<Output>;
 
   _getType(input: ParseInput): string {
@@ -406,8 +414,8 @@ export abstract class ZodType<
     this.default = this.default.bind(this);
     this.catch = this.catch.bind(this);
     this.describe = this.describe.bind(this);
-    this.weight = this.weight.bind(this);
-    this.mutable = this.mutable.bind(this);
+    this.wt = this.wt.bind(this);
+    this.mut = this.mut.bind(this);
     this.pipe = this.pipe.bind(this);
     this.readonly = this.readonly.bind(this);
     this.isNullable = this.isNullable.bind(this);
@@ -494,7 +502,7 @@ export abstract class ZodType<
     });
   }
 
-  weight(weight: number): this {
+  wt(weight: number): this {
     const This = (this as any).constructor;
     return new This({
       ...this._def,
@@ -502,7 +510,7 @@ export abstract class ZodType<
     });
   }
 
-  mutable(mutable: boolean): this {
+  mut(mutable: boolean): this {
     const This = (this as any).constructor;
     return new This({
       ...this._def,
